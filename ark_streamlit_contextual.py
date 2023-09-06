@@ -9,12 +9,15 @@ model_filename = 'logistic_regression_model.pkl'
 vectorizer_filename = 'tfidf_vectorizer_lem.pkl'
 label_encoder_filename = 'label_encoder.pkl'
 
+@st.cache
 with open(model_filename, 'rb') as model_file:
     loaded_classifier = pickle.load(model_file)
 
+@st.cache
 with open(vectorizer_filename, 'rb') as vectorizer_file:
     loaded_vectorizer = pickle.load(vectorizer_file)
 
+@st.cache
 with open(label_encoder_filename, 'rb') as label_encoder_file:
     loaded_label_encoder = pickle.load(label_encoder_file)
 
