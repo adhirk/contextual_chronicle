@@ -1,10 +1,10 @@
 altair==5.0.1
-matplotlib==3.4.3  # Included due to the plt import
+matplotlib==3.4.3  
 nltk==3.8.1
-numpy==1.22.0  # Included due to the np import
-pandas==1.4.1  # Included due to the pd import
-plotly==5.16.1  # Included due to the px import
-scikit-learn==1.2.2  # Included due to the various scikit-learn imports
-seaborn==0.11.2  # Included due to the sns import
-sklearn==0.0.post7  # Included due to the various scikit-learn imports
-wordcloud==1.8.1  # Included due to the WordCloud import
+numpy==1.22.0  
+pandas==1.4.1  
+plotly==5.16.1  
+scikit-learn==1.2.2
+seaborn==0.11.2  
+sklearn==0.0.post7  
+wordcloud==1.8.1  
