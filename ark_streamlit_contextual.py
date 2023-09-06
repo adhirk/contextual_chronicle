@@ -4,22 +4,26 @@ import pickle
 from PIL import Image
 import datetime  # Import the datetime module
 
-# Load the saved model, vectorizer, and label encoder
+# Define a function to load the model, vectorizer, and label encoder
+@st.cache(allow_output_mutation=True)
+def load_ml_assets(model_filename, vectorizer_filename, label_encoder_filename):
+    with open(model_filename, 'rb') as model_file, \
+         open(vectorizer_filename, 'rb') as vectorizer_file, \
+         open(label_encoder_filename, 'rb') as label_encoder_file:
+        loaded_classifier = pickle.load(model_file)
+        loaded_vectorizer = pickle.load(vectorizer_file)
+        loaded_label_encoder = pickle.load(label_encoder_file)
+    return loaded_classifier, loaded_vectorizer, loaded_label_encoder
+
+# Provide the filenames for your model, vectorizer, and label encoder
 model_filename = 'logistic_regression_model.pkl'
 vectorizer_filename = 'tfidf_vectorizer_lem.pkl'
 label_encoder_filename = 'label_encoder.pkl'
 
-@st.cache
-with open(model_filename, 'rb') as model_file:
-    loaded_classifier = pickle.load(model_file)
-
-@st.cache
-with open(vectorizer_filename, 'rb') as vectorizer_file:
-    loaded_vectorizer = pickle.load(vectorizer_file)
-
-@st.cache
-with open(label_encoder_filename, 'rb') as label_encoder_file:
-    loaded_label_encoder = pickle.load(label_encoder_file)
+# Load the model, vectorizer, and label encoder using the function
+loaded_classifier, loaded_vectorizer, loaded_label_encoder = load_ml_assets(
+    model_filename, vectorizer_filename, label_encoder_filename
+)
 
 # Set the page title and configure the page
 st.set_page_config(
